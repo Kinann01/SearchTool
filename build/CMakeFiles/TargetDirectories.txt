@@ -1,0 +1,5 @@
+/Users/kinanal-falakh/Desktop/SearchTool/build/CMakeFiles/edit_cache.dir
+/Users/kinanal-falakh/Desktop/SearchTool/build/CMakeFiles/rebuild_cache.dir
+/Users/kinanal-falakh/Desktop/SearchTool/build/src/CMakeFiles/SearchToolRunner.dir
+/Users/kinanal-falakh/Desktop/SearchTool/build/src/CMakeFiles/edit_cache.dir
+/Users/kinanal-falakh/Desktop/SearchTool/build/src/CMakeFiles/rebuild_cache.dir
