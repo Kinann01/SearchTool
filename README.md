@@ -65,4 +65,4 @@ option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 - There are some limitations to be aware of:
    * The search tool may not access directories without the proper permissions. If encountered, an error message will be displayed, indicating the inaccessible directory.
    * It is advisable to ensure that the files being searched contain the specified string, to prevent running unnecessary searches that yield no results.
-   * It is recommended that all the search criteria is provided.
+   * It is recommended that all the search criteria is provided since proper exception handling is not implemented.
