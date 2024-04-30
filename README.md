@@ -17,10 +17,10 @@
 mkdir build
 cd build
 cmake ..
-make
+make SearchToolRunner
 
 # Run the Search Tool:
-./SearchToolRunner
+./src/SearchToolRunner
 ```
 
 ## Input Options
