@@ -1,7 +1,7 @@
 # File Search Tool 
 
 ## Introduction
-- This repository contains a search tool implemented in C++. The tool allows users to find files containing a specified string provided by the user. It provides options to specify the search criteria, including the search starting point, the search string, specific file extensions to look into, and whether to include hidden files or not in the search. In short, its what the command `find . -name "*.txt" | xargs grep "search_string"` but in c++.
+- This repository contains a search tool implemented in C++. The tool allows users to find files containing a specified string provided by the user. It provides options to specify the search criteria, including the search starting point, the search string, specific file extensions to look into, and whether to include hidden files or not in the search. In short, its what the command `find . -name "*.txt" | xargs grep "search_string"` in UNIX-like systems does.
 
 ## Dependencies
 
