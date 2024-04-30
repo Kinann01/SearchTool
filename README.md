@@ -8,7 +8,7 @@
 - The search tool requires the following dependencies:
     * CMake: Build system
     * Make: Build system
-    * A compiler that supports at least c++17
+    * A compiler that supports at least c++20
 
 ## Usage 
 
