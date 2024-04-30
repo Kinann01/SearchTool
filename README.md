@@ -30,12 +30,10 @@ make
     * File extensions to search for (leave empty for all files).
     * Whether to include search in hidden files (1 for yes, 0 for no).
 
-- Refer to `config.txt` for an example of the input configuration file.
-
 ## Additional Configuration (Optional)
 - The search tool supports additional configuration through preprocessor directives:
     * `#DEBUG`: Enable debugging output.
-    * `#READ_FROM_FILE`: Read input from a configuration file.
+    * `#READ_FROM_FILE`: Read input from a configuration file. Refer to `config.txt` for an example of the input configuration file. Once the project is run, the user will have to input the path to the configuration file.
     * `#ONE_INSTANCE`: Limit output to one instance of the search string.
     * To enable these options, modify the cmake command as follows:
 
@@ -67,3 +65,4 @@ option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 - There are some limitations to be aware of:
    * The search tool may not access directories without the proper permissions. If encountered, an error message will be displayed, indicating the inaccessible directory.
    * It is advisable to ensure that the files being searched contain the specified string, to prevent running unnecessary searches that yield no results.
+   * It is recommended that all the search criteria are provided.
