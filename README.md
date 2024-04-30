@@ -1,7 +1,7 @@
 # File Search Tool 
 
 ## Introduction
-- This repository contains a search tool implemented in C++. The tool allows users to search for a specific string within files located in a given directory and its subdirectories. It provides options to specify the search criteria, including the search string, file extensions to search for, and whether to include hidden files in the search. The output is a path to files containing the search string.
+- This repository contains a search tool implemented in C++. The tool allows users to find files containing a specified string provided by the user. It provides options to specify the search criteria, including the search starting point, the search string, specific file extensions to look into, and whether to include hidden files or not in the search. In short, its what the command `find . -name "*.txt" | xargs grep "search_string"` but in c++.
 
 ## Dependencies
 
@@ -34,9 +34,9 @@ make
 
 ## Additional Configuration (Optional)
 - The search tool supports additional configuration through preprocessor directives:
-    * DEBUG: Enable debugging output.
-    * READ_FROM_FILE: Read input from a configuration file.
-    * ONE_INSTANCE: Limit output to one instance of the search string.
+    * `#DEBUG`: Enable debugging output.
+    * `#READ_FROM_FILE`: Read input from a configuration file.
+    * `#ONE_INSTANCE`: Limit output to one instance of the search string.
     * To enable these options, modify the cmake command as follows:
 
 ```cmake
@@ -48,7 +48,7 @@ option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 - Optionally, you can build the project with the following command: `cmake -DENABLE_DEBUG=ON -DENABLE_READ_FROM_FILE=ON -DENABLE_ONE_INSTANCE=ON ..` instead of just `cmake ..`
 
 ## Tools Used
-- The search is conducted in parallel using the **Thread Pool** design pattern. The `thread_pool_t` class, implemented in `include/threadPool.h` and `src/threadPool.cpp`, manages a pool of threads that concurrently search for the specified string in files.
+- The search is conducted in parallel using the **Thread Pool** design pattern. The `thread_pool_t` class is implemented in `include/threadPool.h` and `src/threadPool.cpp`, manages a pool of threads that concurrently search for the specified string in files.
 
 - There are two constructors for the `thread_pool_t` type:
    * A parametrized constructor that allows specifying the number of threads in the pool.
@@ -57,7 +57,7 @@ option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 - The `std::filesystem` library is utilized to traverse directories and search for files. Starting from the specified path, the search recursively enqueues tasks to the thread pool, searching through each directory and its subdirectories. Implementation details can be found in `src/searcher.cpp` and `include/searcher.h`.
 
 ## Results
-- The search tool outputs the paths of files containing the specified search string directly in the terminal.
+- The search tool outputs the paths of files containing the specified search string directly in the terminal. When in DEBUG mode, be careful not to miss them.
 
 ## Nuances
 - There are some limitations to be aware of:
