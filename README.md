@@ -43,7 +43,7 @@ option(ENABLE_READ_FROM_FILE "Enable reading input from file" ON)
 option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 ```
 
-- Optionally, you can build the project with the following command: `cmake -DENABLE_DEBUG=ON -DENABLE_READ_FROM_FILE=ON -DENABLE_ONE_INSTANCE=ON ..` instead of just `cmake ..`
+- Optionally, you can build the project with the following command: `cmake -DENABLE_DEBUG=ON or =OFF -DENABLE_READ_FROM_FILE=ON or =OFF -DENABLE_ONE_INSTANCE=ON or =OFF ..`, as prefered, instead of just `cmake ..`
 
 ## Implementation Details
 - The search is conducted in parallel using the **Thread Pool** design pattern. The `thread_pool_t` class, implemented in `include/threadPool.h` and `src/threadPool.cpp`, manages a pool of threads that concurrently search for the specified string in files.
@@ -63,6 +63,5 @@ option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 
 ## Nuances
 - There are some limitations to be aware of:
-   * The search tool may not access directories without the proper permissions. If encountered, an error message will be displayed, indicating the inaccessible directory.
    * It is advisable to ensure that the files being searched contain the specified string, to prevent running unnecessary searches that yield no results.
    * It is recommended that all the search criteria is provided since proper exception handling is not implemented.
