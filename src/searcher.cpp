@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <system_error>
+
 
 Searcher_t::Searcher_t(const std::string& root, 
                        const std::string& searchStr, 
@@ -58,9 +60,17 @@ void Searcher_t::processDirectory(const std::filesystem::path& dirPath) {
         }
 
     } catch (const std::filesystem::filesystem_error& e) {
-        #ifdef DEBUG
-        debuggingOutput(dirPath, "Error due to file System: ");
-        #endif
+
+        if (e.code() == std::make_error_code(std::errc::permission_denied)) {
+            #ifdef DEBUG
+            debuggingOutput(dirPath, "Permission Denied: ");
+            #endif
+            return;
+        } else {
+            #ifdef DEBUG
+            debuggingOutput(dirPath, "Error due to file System: ");
+            #endif
+        }
     } 
 }
 
