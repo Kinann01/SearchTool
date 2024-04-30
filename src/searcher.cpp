@@ -1,12 +1,4 @@
 #include "../include/searcher.h"
-#include <filesystem>
-#include <iostream>
-#include <queue>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <system_error>
-
 
 Searcher_t::Searcher_t(const std::string& root, 
                        const std::string& searchStr, 
@@ -115,11 +107,9 @@ bool Searcher_t::shouldSkipDir(const std::filesystem::path& dirPath) {
     return false;
 }
 
-
 bool Searcher_t::shouldSkipFile(const std::filesystem::path& filePath) {
 
-    if (fileExtensions && !fileExtensions->empty() && 
-            fileExtensions->find(filePath.extension().string()) == fileExtensions->end()) {
+    if (fileExtensions && !fileExtensions->empty() && !fileExtensions->contains(filePath.extension().string())) {
                 #ifdef DEBUG
                 debuggingOutput(filePath, "Skipping File (Not Suitable Extensions): ");
                 #endif

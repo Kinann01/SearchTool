@@ -5,7 +5,6 @@
 #include "../include/searcher.h"
 #include <fstream>
 
-
 std::unique_ptr<std::unordered_set<std::string>> splitExtensions(const std::string& exts){
     auto extensions = std::make_unique<std::unordered_set<std::string>>();
     std::string extension; 
@@ -57,16 +56,18 @@ int main(){
 
     #else
     std::cout << "Enter the path to start the search from: ";
-    std::cin >> path;
+    std::getline(std::cin, path);
 
     std::cout << "Enter the string to search for in files: ";
-    std::cin >> searchString;
+    std::getline(std::cin, searchString);
 
     std::cout << "Enter file extensions to search for (leave empty for all files): ";
-    std::cin >> fileExtensions;
+    std::getline(std::cin, fileExtensions);
 
     std::cout << "Include search in hidden files? (1 for yes, 0 for no): ";
-    std::cin >> includeHiddenFiles;
+    std::string temp;
+    std::getline(std::cin, temp);
+    includeHiddenFiles = std::stoi(temp);
 
         #ifdef DEBUG // Confirm input
         std::cout << "Path: " << path << std::endl;

@@ -1,10 +1,14 @@
 #ifndef SEARCHER_H
 #define SEARCHER_H
 
-#include <string>
-#include <filesystem>
 #include <unordered_set>
+#include <filesystem>
+#include <iostream>
+#include <queue>
 #include <fstream>
+#include <string>
+#include <sstream>
+#include <system_error>
 
 #include "../include/threadPool.h"
 
