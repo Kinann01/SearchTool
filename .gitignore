@@ -1,0 +1,23 @@
+# CMake
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/*.cmake
+
+# C++
+*.o
+*.obj
+*.a
+*.exe
+*.out
+
+# Binary
+/bin/
+
+# Visual Studio Code
+.vscode/
+
+# macOS
+.DS_Store
+.AppleDouble
+.Trashes
