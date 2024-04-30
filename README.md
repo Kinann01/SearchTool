@@ -35,7 +35,7 @@ make
     * `#DEBUG`: Enable debugging output.
     * `#READ_FROM_FILE`: Read input from a configuration file. Refer to `config.txt` for an example of the input configuration file. Once the project is run, the user will have to input the path to the configuration file.
     * `#ONE_INSTANCE`: Limit output to one instance of the search string.
-    * To enable these options, modify the cmake command as follows:
+- To enable the above options, modify the cmake command as follows:
 
 ```cmake
 option(ENABLE_DEBUG "Enable debugging" ON)
