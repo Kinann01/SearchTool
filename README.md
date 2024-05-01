@@ -48,7 +48,7 @@ option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 ## Implementation Details
 - The search is conducted in parallel using the **Thread Pool** design pattern. The `thread_pool_t` class, implemented in `include/threadPool.h` and `src/threadPool.cpp`, manages a pool of threads that concurrently search for the specified string in files.
 
-- The `thread_pool_t` class is designed to be thread safe allowing proper synchronization between threads. It uses a `std::condition_variable` to notify threads when tasks are available for execution, a mutex to protect shared resources, and a `std::queue` to store tasks.
+- The `thread_pool_t` class is designed to be thread safe allowing proper synchronization between threads. It uses a `std::condition_variable` to notify threads when tasks are available for execution, a `std::mutex` to protect shared resources, and a `std::queue` to store tasks.
 
 - There are two constructors for the `thread_pool_t` type:
    * A parametrized constructor that allows specifying the number of threads in the pool.
@@ -56,7 +56,7 @@ option(ENABLE_ONE_INSTANCE "Enable showing only one instance of output" ON)
 
 - The `std::filesystem` library is utilized to traverse directories and search for files. Starting from the specified path, the search recursively enqueues tasks to the thread pool, searching through each directory and its subdirectories. Implementation details can be found in `src/searcher.cpp` and `include/searcher.h`.
 
-- The `searcher_t` class is also designed to be thread safe. It uses a 'std::mutex' to ensure proper access to output operations.
+- The `searcher_t` class is also designed to be thread safe. It uses a `std::mutex` to ensure proper access to output operations.
 
 ## Results
 - The search tool outputs the paths of files containing the specified search string directly in the terminal. When in DEBUG mode, be careful not to miss them.
