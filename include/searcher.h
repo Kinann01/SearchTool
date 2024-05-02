@@ -15,8 +15,8 @@
 class Searcher_t {
 
 public:
-    Searcher_t(const std::string&, 
-               const std::string&, 
+    Searcher_t(std::string ,
+               std::string ,
                std::unique_ptr<std::unordered_set<std::string>>, 
                bool
               );
@@ -27,8 +27,8 @@ public:
 private:
     void searchFile(const std::filesystem::path&);
     void processDirectory(const std::filesystem::path&);
-    bool shouldSkipDir(const std::filesystem::path&);
-    bool shouldSkipFile(const std::filesystem::path&);
+    bool shouldSkipDir(const std::filesystem::path&) const;
+    bool shouldSkipFile(const std::filesystem::path&) const;
     void debuggingOutput(const std::filesystem::path&, const std::string&);
 
     std::string rootPath;

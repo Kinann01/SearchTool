@@ -1,11 +1,11 @@
 #include "../include/threadPool.h"
 
-Thread_pool_t::Thread_pool_t() : canAccess(false) {
+Thread_pool_t::Thread_pool_t() : canAccess(false), poolTerminated(false) {
     std::size_t numThreads = std::thread::hardware_concurrency();
     construct(numThreads);
 }
 
-Thread_pool_t::Thread_pool_t(std::size_t numThreads) : canAccess(false) {
+Thread_pool_t::Thread_pool_t(std::size_t numThreads) : canAccess(false), poolTerminated(false) {
     construct(numThreads);
 }
 
@@ -33,11 +33,11 @@ void Thread_pool_t::construct(std::size_t numThreads){
     poolTerminated = false;
 
     for (std::size_t i = 0; i < numThreads; i++){
-        workerThreads.emplace_back([this] (void) -> void{
+        workerThreads.emplace_back([this] () -> void{
 
             for (;;){
                 std::unique_lock<std::mutex> lock(queueMtx);
-                cv.wait(lock, [this] (void) -> bool{ 
+                cv.wait(lock, [this] () -> bool{
                     return canRunTask();
                 });
 

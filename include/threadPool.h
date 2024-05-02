@@ -25,7 +25,7 @@ private:
     std::queue<optional_task_t> tasks;
     
     bool canRunTask();
-    void executeTask(optional_task_t);
+    static void executeTask(optional_task_t);
     bool canTerminateTask();
     void construct(std::size_t);
 

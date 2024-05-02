@@ -3,7 +3,6 @@
 #include <sstream>
 #include <memory>
 #include "../include/searcher.h"
-#include <fstream>
 
 std::unique_ptr<std::unordered_set<std::string>> splitExtensions(const std::string& exts){
     auto extensions = std::make_unique<std::unordered_set<std::string>>();

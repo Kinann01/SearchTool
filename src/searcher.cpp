@@ -1,9 +1,9 @@
 #include "../include/searcher.h"
 
-Searcher_t::Searcher_t(const std::string& root, 
-                       const std::string& searchStr, 
+Searcher_t::Searcher_t(std::string  root,
+                       std::string  searchStr,
                        std::unique_ptr<std::unordered_set<std::string>> exts, 
-                       bool hidden) : rootPath(root), searchString(searchStr), 
+                       bool hidden) : rootPath(std::move(root)), searchString(std::move(searchStr)),
                        includeHidden(hidden), fileExtensions(std::move(exts)) 
                        
                        { 
@@ -80,15 +80,15 @@ void Searcher_t::searchFile(const std::filesystem::path& filePath) {
         if (line.find(searchString) != std::string::npos) {
             std::unique_lock<std::mutex> lock(outputMutex);
             std::cout << "Found in file: " << filePath << std::endl;
+            fileFound = true; // For printing only 1 instance of the output
             lock.unlock();
-            fileFound = true;
             return;
         }
     }
 }
 
 
-bool Searcher_t::shouldSkipDir(const std::filesystem::path& dirPath) {
+bool Searcher_t::shouldSkipDir(const std::filesystem::path& dirPath) const {
     // macOS specific
     if (dirPath.string().find("/Library") != std::string::npos) {
         #ifdef DEBUG
@@ -107,7 +107,7 @@ bool Searcher_t::shouldSkipDir(const std::filesystem::path& dirPath) {
     return false;
 }
 
-bool Searcher_t::shouldSkipFile(const std::filesystem::path& filePath) {
+bool Searcher_t::shouldSkipFile(const std::filesystem::path& filePath) const {
 
     if (fileExtensions && !fileExtensions->empty() && !fileExtensions->contains(filePath.extension().string())) {
                 #ifdef DEBUG
